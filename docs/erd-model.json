@@ -1,0 +1,1362 @@
+{
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "account_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "user_name",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "password_hash",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "phone_number",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "role",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "seniors",
+      "columns": [
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "timezone",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "user_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "users.user_id",
+          "required": false
+        },
+        {
+          "name": "birth_date",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "address",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "current_risk_level",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "last_status_updated_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "status_event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "senior_guardians",
+      "columns": [
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "guardian_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "users.user_id",
+          "required": true
+        },
+        {
+          "name": "relationship",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "is_primary",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "devices",
+      "columns": [
+        {
+          "name": "device_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "parent_device_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "devices.device_id",
+          "required": false
+        },
+        {
+          "name": "device_type",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "connection_status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "last_heartbeat_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "device_logs",
+      "columns": [
+        {
+          "name": "log_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "device_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "devices.device_id",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "ingested_events",
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "device_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "devices.device_id",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "event_type",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "received_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "payload_json",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "sensor_logs",
+      "columns": [
+        {
+          "name": "log_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": true
+        },
+        {
+          "name": "piezo_impact_val",
+          "type": "REAL",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "tof_estimated_height_mm",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "ai_fall_confidence",
+          "type": "REAL",
+          "pk": false,
+          "fk": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "incidents",
+      "columns": [
+        {
+          "name": "incident_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "event_time",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "risk_level",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "summary",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "incident_details",
+      "columns": [
+        {
+          "name": "incident_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "incidents.incident_id",
+          "required": true
+        },
+        {
+          "name": "sensor_log_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "sensor_logs.log_id",
+          "required": true
+        },
+        {
+          "name": "gesture_cancelled",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "snapshot_image_url",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "voice_assets",
+      "columns": [
+        {
+          "name": "voice_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "label",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "is_active",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "medication_schedules",
+      "columns": [
+        {
+          "name": "schedule_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "medication_name",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "med_time",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "days_of_week_json",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "voice_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "voice_assets.voice_id",
+          "required": true
+        },
+        {
+          "name": "activity_window_minutes",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "is_active",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "medication_logs",
+      "columns": [
+        {
+          "name": "log_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "medication_schedules.schedule_id",
+          "required": true
+        },
+        {
+          "name": "source_event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": false
+        },
+        {
+          "name": "scheduled_date",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "activity_detected_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "voice_played_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "play_status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "speaker_commands",
+      "columns": [
+        {
+          "name": "command_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "device_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "devices.device_id",
+          "required": true
+        },
+        {
+          "name": "log_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "medication_logs.log_id",
+          "required": true
+        },
+        {
+          "name": "voice_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "voice_assets.voice_id",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "expires_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "lifestyle_patterns",
+      "columns": [
+        {
+          "name": "pattern_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "pattern_type",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "observation_start_time",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "observation_end_time",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "metric_value",
+          "type": "REAL",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "metric_unit",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "summary_note",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "is_anomaly",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "push_tokens",
+      "columns": [
+        {
+          "name": "token_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "user_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "users.user_id",
+          "required": true
+        },
+        {
+          "name": "installation_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "provider",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "push_token",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "device_os",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "notifications",
+      "columns": [
+        {
+          "name": "notification_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "user_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "users.user_id",
+          "required": true
+        },
+        {
+          "name": "source_event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": false
+        },
+        {
+          "name": "schedule_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "medication_schedules.schedule_id",
+          "required": false
+        },
+        {
+          "name": "scheduled_date",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        },
+        {
+          "name": "notification_type",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "body",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "deep_link",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "delivery_status",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "event_feed",
+      "columns": [
+        {
+          "name": "cursor",
+          "type": "INTEGER",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "senior_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "seniors.senior_id",
+          "required": true
+        },
+        {
+          "name": "event_type",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "occurred_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "data_json",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "idempotency_keys",
+      "columns": [
+        {
+          "name": "principal_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "users.user_id",
+          "required": true
+        },
+        {
+          "name": "route_key",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "idempotency_key",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "request_hash",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "response_json",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "auth_sessions",
+      "columns": [
+        {
+          "name": "session_id",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "user_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "users.user_id",
+          "required": true
+        },
+        {
+          "name": "token_hash",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "expires_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "revoked_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "auth_login_attempts",
+      "columns": [
+        {
+          "name": "scope_key",
+          "type": "TEXT",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "fail_count",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "window_started_at",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "incident_assessment_events",
+      "columns": [
+        {
+          "name": "assessment_seq",
+          "type": "INTEGER",
+          "pk": true,
+          "fk": "",
+          "required": true
+        },
+        {
+          "name": "event_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "ingested_events.event_id",
+          "required": true
+        },
+        {
+          "name": "incident_id",
+          "type": "TEXT",
+          "pk": false,
+          "fk": "incidents.incident_id",
+          "required": true
+        },
+        {
+          "name": "applied",
+          "type": "INTEGER",
+          "pk": false,
+          "fk": "",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ingested_events",
+      "to": "seniors",
+      "field": "status_event_id",
+      "unique": false,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "users",
+      "to": "seniors",
+      "field": "user_id",
+      "unique": true,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "users",
+      "to": "senior_guardians",
+      "field": "guardian_id",
+      "unique": false,
+      "optional": false,
+      "identifying": true
+    },
+    {
+      "from": "seniors",
+      "to": "senior_guardians",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": true
+    },
+    {
+      "from": "devices",
+      "to": "devices",
+      "field": "parent_device_id",
+      "unique": false,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "devices",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "devices",
+      "to": "device_logs",
+      "field": "device_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "ingested_events",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "devices",
+      "to": "ingested_events",
+      "field": "device_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "sensor_logs",
+      "field": "event_id",
+      "unique": true,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "incidents",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "incidents",
+      "field": "event_id",
+      "unique": true,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "sensor_logs",
+      "to": "incident_details",
+      "field": "sensor_log_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "incidents",
+      "to": "incident_details",
+      "field": "incident_id",
+      "unique": true,
+      "optional": false,
+      "identifying": true
+    },
+    {
+      "from": "voice_assets",
+      "to": "medication_schedules",
+      "field": "voice_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "medication_schedules",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "medication_logs",
+      "field": "source_event_id",
+      "unique": false,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "medication_schedules",
+      "to": "medication_logs",
+      "field": "schedule_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "voice_assets",
+      "to": "speaker_commands",
+      "field": "voice_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "medication_logs",
+      "to": "speaker_commands",
+      "field": "log_id",
+      "unique": true,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "devices",
+      "to": "speaker_commands",
+      "field": "device_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "lifestyle_patterns",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "lifestyle_patterns",
+      "field": "event_id",
+      "unique": true,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "users",
+      "to": "push_tokens",
+      "field": "user_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "medication_schedules",
+      "to": "notifications",
+      "field": "schedule_id",
+      "unique": false,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "notifications",
+      "field": "source_event_id",
+      "unique": false,
+      "optional": true,
+      "identifying": false
+    },
+    {
+      "from": "users",
+      "to": "notifications",
+      "field": "user_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "notifications",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "seniors",
+      "to": "event_feed",
+      "field": "senior_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "users",
+      "to": "idempotency_keys",
+      "field": "principal_id",
+      "unique": false,
+      "optional": false,
+      "identifying": true
+    },
+    {
+      "from": "users",
+      "to": "auth_sessions",
+      "field": "user_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "incidents",
+      "to": "incident_assessment_events",
+      "field": "incident_id",
+      "unique": false,
+      "optional": false,
+      "identifying": false
+    },
+    {
+      "from": "ingested_events",
+      "to": "incident_assessment_events",
+      "field": "event_id",
+      "unique": true,
+      "optional": false,
+      "identifying": false
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "path": "/ws/admin/live",
+  "subscribe": {
+    "action": "SUBSCRIBE",
+    "access_token": "admin-demo-token",
+    "after_cursor": 0
+  },
+  "messages": [
+    {
+      "type": "SUBSCRIBED",
+      "after_cursor": 0,
+      "latest_cursor": 23
+    },
+    {
+      "type": "EVENT",
+      "cursor": 1,
+      "event_id": "38453015-45a6-4283-abbb-c8c07180c591",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.212355Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "NORMAL"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 2,
+      "event_id": "122f9b87-7856-4ea1-9fba-316970853527",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.212355Z",
+      "senior_name": "이주의(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "CAUTION"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 3,
+      "event_id": "a031faf1-2022-4567-97e2-fb987ba0468d",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.213356Z",
+      "senior_name": "박위험(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "DANGER"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 4,
+      "event_id": "3df19abf-5d4e-4cd9-96e0-93318b15d3c6",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.213356Z",
+      "senior_name": "최빈목록(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "NORMAL"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 5,
+      "event_id": "f2bdcacf-4178-4119-afa8-bd2bc5c9be78",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.996189Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.996189Z",
+        "risk_level": "CAUTION",
+        "status_event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 6,
+      "event_id": "46ab5c6e-614c-4624-95b8-ae577445050f",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:19.996189Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "analysis_status": "PENDING_VERIFICATION",
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "CAUTION",
+        "stage": "PRELIMINARY",
+        "summary": "예시: 센서 낙상 의심"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 7,
+      "event_id": "1b711125-62a6-4154-8c5d-c5b18beec71a",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.002080Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "analysis_status": "CAMERA_UNAVAILABLE",
+        "confirmed_fall": null,
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "CAUTION",
+        "stage": "FINAL",
+        "status": "OPEN",
+        "summary": "예시: 카메라 검증 불가"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 8,
+      "event_id": "40b46691-40b4-48d5-a8d0-711cdbc0658f",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.008090Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.008090Z",
+        "risk_level": "DANGER",
+        "status_event_id": "a823f578-bf28-493e-aa7d-e68c5498ee45"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 9,
+      "event_id": "19db8d5c-863b-466e-9061-58f6807dda53",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.008090Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "analysis_status": "COMPLETED",
+        "confirmed_fall": true,
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "DANGER",
+        "stage": "FINAL",
+        "status": "OPEN",
+        "summary": "예시: 카메라 낙상 확인"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 10,
+      "event_id": "e3646677-f708-4fbf-8bad-ac7d90e27dd1",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.021179Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.021179Z",
+        "risk_level": "CAUTION",
+        "status_event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 11,
+      "event_id": "adfdef43-d7d0-4101-919d-edd5f38906db",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.021179Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "analysis_status": "PENDING_VERIFICATION",
+        "incident_id": "895057f1-2aac-45d4-ab0c-ae56417b3e68",
+        "risk_level": "CAUTION",
+        "stage": "PRELIMINARY",
+        "summary": "예시: 센서 낙상 의심"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 15,
+      "event_id": "77be684c-23d3-4b5d-9273-8e7d960cfee9",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.121485Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.121485Z",
+        "risk_level": "DANGER",
+        "status_event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 16,
+      "event_id": "9e840583-cc14-4adf-85a1-a0e79699fc87",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.121485Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "incident_id": "47659b03-6dc6-412d-969d-ac94d60ca3f6",
+        "risk_level": "DANGER",
+        "summary": "압전·ToF·영상 AI 판정"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 17,
+      "event_id": "3bd19a6d-6152-4c52-9a94-2a8d77adb20b",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "PATTERN_UPDATED",
+      "occurred_at": "2026-11-22T08:13:20.159695Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "is_anomaly": true,
+        "pattern_id": "3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+        "pattern_type": "PROLONGED_LYING"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 22,
+      "event_id": "b2007d06-9fd4-4bb1-b008-d3b6bce8da0f",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.340921Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.340921Z",
+        "risk_level": "DANGER",
+        "status_event_id": "678f7797-ceb1-4659-a891-54466a5e3809"
+      },
+      "replayed": true
+    },
+    {
+      "type": "EVENT",
+      "cursor": 23,
+      "event_id": "96fde84e-5c70-4706-aa79-481a0f2a4363",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.340921Z",
+      "senior_name": "김안심(가상)",
+      "data": {
+        "incident_id": "eb6fb609-62ab-4eb1-9267-a2195a26de3a",
+        "risk_level": "DANGER",
+        "summary": "시연: DANGER"
+      },
+      "replayed": true
+    },
+    {
+      "type": "CURSOR",
+      "cursor": 23,
+      "has_more": false
+    },
+    {
+      "type": "PONG",
+      "timestamp": "2026-11-22T08:13:20.373802Z"
+    }
+  ],
+  "forbidden": {
+    "type": "ERROR",
+    "error_code": "FORBIDDEN",
+    "message": "관리자 권한이 필요합니다."
+  }
+}

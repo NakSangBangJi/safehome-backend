@@ -1,0 +1,1414 @@
+# API 요청·응답 예시
+생성 기준: 2026-11-22 / 현재 Mock 서버 응답.
+UUID·시각·커서는 예시이므로 실제 호출에는 현재 서버에서 조회한 값을 사용하세요.
+각 예시에 요청 헤더를 표시했습니다. 어르신 목록은 보호자 기준 3명, 복약 등록·수정·삭제는 어르신 본인 계정 예시입니다. fixtures.json은 관리자 기준 전체 가상 데이터 4명입니다.
+센서 수치와 알림 상태는 개발용 모의 값이며 실제 AI 판단·휴대폰 전송 성공을 뜻하지 않습니다.
+비밀번호 로그인 예시는 버려지는 메모리 DB에서 생성한 것입니다. Example-only-password-123!은 현재 PC의 실제 연습 계정 비밀번호가 아닙니다. 세션 토큰도 이미 폐기된 예시입니다.
+
+## GET /health
+
+응답: HTTP 200
+```json
+{
+  "status": "ok",
+  "mode": "mock",
+  "version": "1.5.0"
+}
+```
+
+## POST /api/v1/auth/mock-login
+
+요청 본문
+```json
+{
+  "account_id": "guardian-demo"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "access_token": "guardian-demo-token",
+  "token_type": "bearer",
+  "role": "GUARDIAN",
+  "user_id": "00000000-0000-4000-8000-000000000002",
+  "mock": true
+}
+```
+
+## POST /api/v1/auth/login
+
+요청 본문
+```json
+{
+  "account_id": "guardian-demo",
+  "password": "Example-only-password-123!"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "access_token": "zWEmgyU2ECLSCvLJHo62R_qT73SUQDqZeJbqpSzOV_M",
+  "token_type": "bearer",
+  "role": "GUARDIAN",
+  "user_id": "00000000-0000-4000-8000-000000000002",
+  "mock": false,
+  "expires_in": 3600,
+  "expires_at": "2026-11-22T09:13:19.621096Z"
+}
+```
+
+## GET /api/v1/auth/me
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer zWEmgyU2ECLSCvLJHo62R_qT73SUQDqZeJbqpSzOV_M"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "user_id": "00000000-0000-4000-8000-000000000002",
+  "account_id": "guardian-demo",
+  "user_name": "시연 보호자",
+  "role": "GUARDIAN"
+}
+```
+
+## POST /api/v1/auth/logout
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer zWEmgyU2ECLSCvLJHo62R_qT73SUQDqZeJbqpSzOV_M"
+}
+```
+
+응답: HTTP 204
+```json
+(본문 없음)
+```
+
+## GET /api/v1/seniors
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "name": "김안심(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "name": "이주의(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "name": "박위험(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    }
+  ]
+}
+```
+
+## GET /api/v1/admin/seniors
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "name": "김안심(가상)",
+      "risk_level": "NORMAL",
+      "last_updated_at": "2026-11-22T08:13:19.211354Z",
+      "status_event_id": null,
+      "data_freshness": "FRESH",
+      "device_summary": {
+        "online": 5,
+        "offline": 0
+      }
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "name": "박위험(가상)",
+      "risk_level": "DANGER",
+      "last_updated_at": "2026-11-22T08:13:19.211354Z",
+      "status_event_id": "bb94e8b3-b901-5491-a5fd-66c5630a68b8",
+      "data_freshness": "FRESH",
+      "device_summary": {
+        "online": 5,
+        "offline": 0
+      }
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "name": "이주의(가상)",
+      "risk_level": "CAUTION",
+      "last_updated_at": "2026-11-22T08:13:19.211354Z",
+      "status_event_id": "6565346c-28dd-592c-a0e8-7450e396bdb6",
+      "data_freshness": "FRESH",
+      "device_summary": {
+        "online": 5,
+        "offline": 0
+      }
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "name": "최빈목록(가상)",
+      "risk_level": "NORMAL",
+      "last_updated_at": "2026-11-22T08:13:19.211354Z",
+      "status_event_id": null,
+      "data_freshness": "STALE",
+      "device_summary": {
+        "online": 0,
+        "offline": 5
+      }
+    }
+  ],
+  "page": 1,
+  "size": 20,
+  "total": 4,
+  "total_pages": 1
+}
+```
+
+## GET /api/v1/admin/incidents
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "incident_id": "5b3ca739-3d64-5515-b551-0ebb870b58a2",
+      "event_id": "6565346c-28dd-592c-a0e8-7450e396bdb6",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "event_time": "2026-11-22T08:13:19.211354Z",
+      "risk_level": "CAUTION",
+      "summary": "모의 센서·AI 낙상 판정",
+      "status": "OPEN",
+      "created_at": "2026-11-22T08:13:19.211354Z",
+      "senior_name": "이주의(가상)"
+    },
+    {
+      "incident_id": "02491d33-bd33-58a6-8a15-c7254de9aece",
+      "event_id": "bb94e8b3-b901-5491-a5fd-66c5630a68b8",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "event_time": "2026-11-22T08:13:19.211354Z",
+      "risk_level": "DANGER",
+      "summary": "모의 센서·AI 낙상 판정",
+      "status": "OPEN",
+      "created_at": "2026-11-22T08:13:19.211354Z",
+      "senior_name": "박위험(가상)"
+    }
+  ],
+  "page": 1,
+  "size": 20,
+  "total": 2,
+  "total_pages": 1
+}
+```
+
+## GET /api/v1/admin/sync
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "events": [
+    {
+      "cursor": 1,
+      "event_id": "38453015-45a6-4283-abbb-c8c07180c591",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.212355Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "NORMAL"
+      },
+      "senior_name": "김안심(가상)"
+    },
+    {
+      "cursor": 2,
+      "event_id": "122f9b87-7856-4ea1-9fba-316970853527",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.212355Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "CAUTION"
+      },
+      "senior_name": "이주의(가상)"
+    },
+    {
+      "cursor": 3,
+      "event_id": "a031faf1-2022-4567-97e2-fb987ba0468d",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.213356Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "DANGER"
+      },
+      "senior_name": "박위험(가상)"
+    },
+    {
+      "cursor": 4,
+      "event_id": "3df19abf-5d4e-4cd9-96e0-93318b15d3c6",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.213356Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "NORMAL"
+      },
+      "senior_name": "최빈목록(가상)"
+    }
+  ],
+  "next_cursor": 4,
+  "latest_cursor": 4,
+  "has_more": false
+}
+```
+
+## POST /api/v1/ingest/fall-assessments
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8",
+  "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:19.996189Z",
+  "stage": "PRELIMINARY",
+  "analysis_status": "PENDING_VERIFICATION",
+  "summary": "예시: 센서 낙상 의심"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8",
+  "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+  "duplicate": false,
+  "state_updated": true,
+  "incident_status": "OPEN",
+  "assessment": {
+    "stage": "PRELIMINARY",
+    "analysis_status": "PENDING_VERIFICATION",
+    "confirmed_fall": null,
+    "camera_confidence": null,
+    "last_event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8",
+    "updated_at": "2026-11-22T08:13:19.999827Z"
+  }
+}
+```
+
+## POST /api/v1/mock/fall-assessments
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075",
+  "incident_id": "895057f1-2aac-45d4-ab0c-ae56417b3e68",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:20.021179Z",
+  "stage": "PRELIMINARY",
+  "analysis_status": "PENDING_VERIFICATION",
+  "summary": "예시: 센서 낙상 의심"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075",
+  "incident_id": "895057f1-2aac-45d4-ab0c-ae56417b3e68",
+  "duplicate": false,
+  "state_updated": true,
+  "incident_status": "OPEN",
+  "assessment": {
+    "stage": "PRELIMINARY",
+    "analysis_status": "PENDING_VERIFICATION",
+    "confirmed_fall": null,
+    "camera_confidence": null,
+    "last_event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075",
+    "updated_at": "2026-11-22T08:13:20.024267Z"
+  }
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/status
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "risk_level": "DANGER",
+  "last_updated_at": "2026-11-22T08:13:20.121485Z",
+  "status_event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+  "data_freshness": "FRESH",
+  "device_summary": {
+    "online": 5,
+    "offline": 0
+  }
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/devices
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "device_id": "8acf27c3-268f-5b26-a014-a8316ca6cf14",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "CAMERA",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": null,
+      "device_type": "GATEWAY",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "2d259f0f-7cdf-5e3e-880a-57bb58051c4a",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "PIEZO_MAT",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "b556fa10-3106-5855-9528-748d33e5d204",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "SPEAKER",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "dc7b5683-383f-5544-9f16-0a7ea989c5b4",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "TOF_SENSOR",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    }
+  ]
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/medications
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+[
+  {
+    "medication_name": "아침약",
+    "med_time": "08:30",
+    "days_of_week": [
+      "MON",
+      "TUE",
+      "WED",
+      "THU",
+      "FRI",
+      "SAT",
+      "SUN"
+    ],
+    "voice_id": "TYPE_A",
+    "activity_window_minutes": 30,
+    "is_active": true,
+    "schedule_id": "9f4e604e-d1de-5f63-825e-bb4bc8e216dc",
+    "senior_id": "00000000-0000-4000-8000-000000000101",
+    "timezone": "Asia/Seoul",
+    "created_at": "2026-11-22T08:13:19.211354Z",
+    "updated_at": "2026-11-22T08:13:19.211354Z"
+  }
+]
+```
+
+## GET /api/v1/seniors/{senior_id}/patterns
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "pattern_id": "3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+      "event_id": "fb087029-dd7f-4b94-8493-71f63b5d68b1",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "pattern_type": "PROLONGED_LYING",
+      "observation_start_time": "2026-11-22T05:13:20.152696Z",
+      "observation_end_time": "2026-11-22T08:13:20.152696Z",
+      "metric_value": 180.0,
+      "metric_unit": "minutes",
+      "summary_note": "장시간 누움 증가",
+      "is_anomaly": true,
+      "created_at": "2026-11-22T08:13:20.159695Z"
+    }
+  ]
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/incidents
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "incident_id": "47659b03-6dc6-412d-969d-ac94d60ca3f6",
+      "event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_time": "2026-11-22T08:13:20.121485Z",
+      "risk_level": "DANGER",
+      "summary": "압전·ToF·영상 AI 판정",
+      "status": "OPEN",
+      "created_at": "2026-11-22T08:13:20.127700Z"
+    },
+    {
+      "incident_id": "895057f1-2aac-45d4-ab0c-ae56417b3e68",
+      "event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_time": "2026-11-22T08:13:20.021179Z",
+      "risk_level": "CAUTION",
+      "summary": "예시: 센서 낙상 의심",
+      "status": "OPEN",
+      "created_at": "2026-11-22T08:13:20.024267Z"
+    },
+    {
+      "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+      "event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_time": "2026-11-22T08:13:19.996189Z",
+      "risk_level": "DANGER",
+      "summary": "예시: 카메라 낙상 확인",
+      "status": "OPEN",
+      "created_at": "2026-11-22T08:13:19.999827Z"
+    }
+  ],
+  "page": 1,
+  "size": 20,
+  "total": 3,
+  "total_pages": 1
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/medication-logs
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "log_id": "8416ba4a-460c-4e1a-8ab7-6626db5c56d1",
+      "schedule_id": "f227b37c-bd43-4e39-80a0-372d008d3b3c",
+      "source_event_id": "a78b9991-3e16-4343-b568-fd2ef58c5323",
+      "scheduled_date": "2026-11-22",
+      "activity_detected_at": "2026-11-22T08:13:20.226958Z",
+      "voice_played_at": "2026-11-22T08:13:20.276595Z",
+      "play_status": "SUCCESS"
+    }
+  ]
+}
+```
+
+## GET /api/v1/seniors/{senior_id}/sync
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "events": [
+    {
+      "cursor": 1,
+      "event_id": "38453015-45a6-4283-abbb-c8c07180c591",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.212355Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.211354Z",
+        "risk_level": "NORMAL"
+      }
+    },
+    {
+      "cursor": 5,
+      "event_id": "f2bdcacf-4178-4119-afa8-bd2bc5c9be78",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:19.996189Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:19.996189Z",
+        "risk_level": "CAUTION",
+        "status_event_id": "2c6f19ee-5b7a-4979-b142-ba411ae5fbf8"
+      }
+    },
+    {
+      "cursor": 6,
+      "event_id": "46ab5c6e-614c-4624-95b8-ae577445050f",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:19.996189Z",
+      "data": {
+        "analysis_status": "PENDING_VERIFICATION",
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "CAUTION",
+        "stage": "PRELIMINARY",
+        "summary": "예시: 센서 낙상 의심"
+      }
+    },
+    {
+      "cursor": 7,
+      "event_id": "1b711125-62a6-4154-8c5d-c5b18beec71a",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.002080Z",
+      "data": {
+        "analysis_status": "CAMERA_UNAVAILABLE",
+        "confirmed_fall": null,
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "CAUTION",
+        "stage": "FINAL",
+        "status": "OPEN",
+        "summary": "예시: 카메라 검증 불가"
+      }
+    },
+    {
+      "cursor": 8,
+      "event_id": "40b46691-40b4-48d5-a8d0-711cdbc0658f",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.008090Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.008090Z",
+        "risk_level": "DANGER",
+        "status_event_id": "a823f578-bf28-493e-aa7d-e68c5498ee45"
+      }
+    },
+    {
+      "cursor": 9,
+      "event_id": "19db8d5c-863b-466e-9061-58f6807dda53",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.008090Z",
+      "data": {
+        "analysis_status": "COMPLETED",
+        "confirmed_fall": true,
+        "incident_id": "bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+        "risk_level": "DANGER",
+        "stage": "FINAL",
+        "status": "OPEN",
+        "summary": "예시: 카메라 낙상 확인"
+      }
+    },
+    {
+      "cursor": 10,
+      "event_id": "e3646677-f708-4fbf-8bad-ac7d90e27dd1",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.021179Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.021179Z",
+        "risk_level": "CAUTION",
+        "status_event_id": "8ec132d1-e299-4d11-97a5-c35e33af5075"
+      }
+    },
+    {
+      "cursor": 11,
+      "event_id": "adfdef43-d7d0-4101-919d-edd5f38906db",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.021179Z",
+      "data": {
+        "analysis_status": "PENDING_VERIFICATION",
+        "incident_id": "895057f1-2aac-45d4-ab0c-ae56417b3e68",
+        "risk_level": "CAUTION",
+        "stage": "PRELIMINARY",
+        "summary": "예시: 센서 낙상 의심"
+      }
+    },
+    {
+      "cursor": 12,
+      "event_id": "f7ff9d01-b5d2-4e7a-a99c-ba81c05a3843",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "MEDICATION_UPDATED",
+      "occurred_at": "2026-11-22T08:13:20.091979Z",
+      "data": {
+        "operation": "CREATED",
+        "schedule_id": "2da239b6-e103-4cbc-ad68-6d03eb8dc694"
+      }
+    },
+    {
+      "cursor": 13,
+      "event_id": "df2707d1-37c8-447e-a2c9-c1941d1e62c4",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "MEDICATION_UPDATED",
+      "occurred_at": "2026-11-22T08:13:20.102492Z",
+      "data": {
+        "operation": "UPDATED",
+        "schedule_id": "2da239b6-e103-4cbc-ad68-6d03eb8dc694"
+      }
+    },
+    {
+      "cursor": 14,
+      "event_id": "83d56c5c-8691-4333-9210-5acd0406a2bd",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "MEDICATION_DELETED",
+      "occurred_at": "2026-11-22T08:13:20.110506Z",
+      "data": {
+        "schedule_id": "2da239b6-e103-4cbc-ad68-6d03eb8dc694"
+      }
+    },
+    {
+      "cursor": 15,
+      "event_id": "77be684c-23d3-4b5d-9273-8e7d960cfee9",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "STATUS_CHANGED",
+      "occurred_at": "2026-11-22T08:13:20.121485Z",
+      "data": {
+        "last_updated_at": "2026-11-22T08:13:20.121485Z",
+        "risk_level": "DANGER",
+        "status_event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7"
+      }
+    },
+    {
+      "cursor": 16,
+      "event_id": "9e840583-cc14-4adf-85a1-a0e79699fc87",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "INCIDENT_ALERT",
+      "occurred_at": "2026-11-22T08:13:20.121485Z",
+      "data": {
+        "incident_id": "47659b03-6dc6-412d-969d-ac94d60ca3f6",
+        "risk_level": "DANGER",
+        "summary": "압전·ToF·영상 AI 판정"
+      }
+    },
+    {
+      "cursor": 17,
+      "event_id": "3bd19a6d-6152-4c52-9a94-2a8d77adb20b",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "PATTERN_UPDATED",
+      "occurred_at": "2026-11-22T08:13:20.159695Z",
+      "data": {
+        "is_anomaly": true,
+        "pattern_id": "3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+        "pattern_type": "PROLONGED_LYING"
+      }
+    },
+    {
+      "cursor": 18,
+      "event_id": "4d82813e-4434-431e-a1a4-83dc79fbab54",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "MEDICATION_UPDATED",
+      "occurred_at": "2026-11-22T08:13:20.221970Z",
+      "data": {
+        "operation": "CREATED",
+        "schedule_id": "f227b37c-bd43-4e39-80a0-372d008d3b3c"
+      }
+    },
+    {
+      "cursor": 19,
+      "event_id": "7b949016-0738-430d-86cb-6fa234421a18",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "SPEAKER_COMMAND_CREATED",
+      "occurred_at": "2026-11-22T08:13:20.235065Z",
+      "data": {
+        "command_id": "844c1008-7c1a-45c3-93b9-7d1bfe66432a",
+        "schedule_id": "f227b37c-bd43-4e39-80a0-372d008d3b3c",
+        "voice_id": "TYPE_A"
+      }
+    },
+    {
+      "cursor": 21,
+      "event_id": "124009ae-837d-48bd-bf9b-acc9aa3ab498",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "event_type": "SPEAKER_COMMAND_ACK",
+      "occurred_at": "2026-11-22T08:13:20.276595Z",
+      "data": {
+        "command_id": "844c1008-7c1a-45c3-93b9-7d1bfe66432a",
+        "status": "SUCCESS"
+      }
+    }
+  ],
+  "next_cursor": 21,
+  "latest_cursor": 21,
+  "has_more": false
+}
+```
+
+## GET /api/v1/voices
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "voice_id": "TYPE_A",
+      "label": "기본 안내",
+      "text": "복약 시간입니다. 약을 챙겨 드세요.",
+      "is_active": true
+    },
+    {
+      "voice_id": "TYPE_B",
+      "label": "친근한 안내",
+      "text": "약 드실 시간이에요. 물과 함께 챙겨 드세요.",
+      "is_active": true
+    }
+  ]
+}
+```
+
+## POST /api/v1/seniors/{senior_id}/medications
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer senior-demo-token",
+  "Idempotency-Key": "example-create-001"
+}
+```
+
+요청 본문
+```json
+{
+  "medication_name": "저녁약",
+  "med_time": "20:30",
+  "days_of_week": [
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "SUN"
+  ],
+  "voice_id": "TYPE_A",
+  "activity_window_minutes": 30,
+  "is_active": true
+}
+```
+
+응답: HTTP 201
+```json
+{
+  "medication_name": "저녁약",
+  "med_time": "20:30",
+  "days_of_week": [
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "SUN"
+  ],
+  "voice_id": "TYPE_A",
+  "activity_window_minutes": 30,
+  "is_active": true,
+  "schedule_id": "2da239b6-e103-4cbc-ad68-6d03eb8dc694",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "timezone": "Asia/Seoul",
+  "created_at": "2026-11-22T08:13:20.090975Z",
+  "updated_at": "2026-11-22T08:13:20.090975Z"
+}
+```
+
+## PATCH /api/v1/medications/{schedule_id}
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer senior-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "med_time": "21:00",
+  "is_active": false
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "medication_name": "저녁약",
+  "med_time": "21:00",
+  "days_of_week": [
+    "MON",
+    "TUE",
+    "WED",
+    "THU",
+    "FRI",
+    "SAT",
+    "SUN"
+  ],
+  "voice_id": "TYPE_A",
+  "activity_window_minutes": 30,
+  "is_active": false,
+  "schedule_id": "2da239b6-e103-4cbc-ad68-6d03eb8dc694",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "timezone": "Asia/Seoul",
+  "created_at": "2026-11-22T08:13:20.090975Z",
+  "updated_at": "2026-11-22T08:13:20.101493Z"
+}
+```
+
+## DELETE /api/v1/medications/{schedule_id}
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer senior-demo-token"
+}
+```
+
+응답: HTTP 204
+```json
+(본문 없음)
+```
+
+## POST /api/v1/notifications/token
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "installation_id": "8962087d-ca03-464e-bbdb-3f469105eaa8",
+  "provider": "EXPO",
+  "push_token": "ExponentPushToken[m1-example]",
+  "device_os": "ANDROID"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "token_id": "bcab9381-ed56-4164-9e68-c0e3346a23d1",
+  "installation_id": "8962087d-ca03-464e-bbdb-3f469105eaa8",
+  "provider": "EXPO",
+  "device_os": "ANDROID",
+  "updated_at": "2026-11-22T08:13:20.118486Z"
+}
+```
+
+## POST /api/v1/ingest/risk-events
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:20.121485Z",
+  "risk_level": "DANGER",
+  "piezo_impact_val": 850.0,
+  "tof_estimated_height_mm": 200,
+  "ai_fall_confidence": 0.96,
+  "gesture_cancelled": false,
+  "summary": "압전·ToF·영상 AI 판정"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+  "duplicate": false,
+  "incident_id": "47659b03-6dc6-412d-969d-ac94d60ca3f6",
+  "pattern_id": null,
+  "command_ids": []
+}
+```
+
+## GET /api/v1/incidents/{incident_id}
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "incident_id": "47659b03-6dc6-412d-969d-ac94d60ca3f6",
+  "event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "event_time": "2026-11-22T08:13:20.121485Z",
+  "risk_level": "DANGER",
+  "summary": "압전·ToF·영상 AI 판정",
+  "status": "OPEN",
+  "created_at": "2026-11-22T08:13:20.127700Z",
+  "evidence": {
+    "piezo_impact_val": 850.0,
+    "tof_estimated_height_mm": 200,
+    "ai_fall_confidence": 0.96,
+    "gesture_cancelled": false,
+    "snapshot_image_url": null
+  },
+  "assessment": null,
+  "assessment_history": [],
+  "assessment_history_has_more": false
+}
+```
+
+## POST /api/v1/ingest/patterns
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "fb087029-dd7f-4b94-8493-71f63b5d68b1",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:20.121485Z",
+  "pattern_type": "PROLONGED_LYING",
+  "observation_start_time": "2026-11-22T05:13:20.152696Z",
+  "observation_end_time": "2026-11-22T08:13:20.152696Z",
+  "metric_value": 180,
+  "metric_unit": "minutes",
+  "summary_note": "장시간 누움 증가",
+  "is_anomaly": true
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "fb087029-dd7f-4b94-8493-71f63b5d68b1",
+  "duplicate": false,
+  "incident_id": null,
+  "pattern_id": "3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+  "command_ids": []
+}
+```
+
+## GET /api/v1/patterns/{pattern_id}
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "pattern_id": "3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+  "event_id": "fb087029-dd7f-4b94-8493-71f63b5d68b1",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "pattern_type": "PROLONGED_LYING",
+  "observation_start_time": "2026-11-22T05:13:20.152696Z",
+  "observation_end_time": "2026-11-22T08:13:20.152696Z",
+  "metric_value": 180.0,
+  "metric_unit": "minutes",
+  "summary_note": "장시간 누움 증가",
+  "is_anomaly": true,
+  "created_at": "2026-11-22T08:13:20.159695Z"
+}
+```
+
+## POST /api/v1/ingest/heartbeats
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "da8d7f56-eb3c-4840-acf4-ab97a1f36a11",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:20.202957Z",
+  "connection_status": "ONLINE"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "da8d7f56-eb3c-4840-acf4-ab97a1f36a11",
+  "duplicate": false,
+  "incident_id": null,
+  "pattern_id": null,
+  "command_ids": []
+}
+```
+
+## POST /api/v1/ingest/activities
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "event_id": "a78b9991-3e16-4343-b568-fd2ef58c5323",
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "occurred_at": "2026-11-22T08:13:20.226958Z",
+  "activity_type": "WAKE_UP"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "event_id": "a78b9991-3e16-4343-b568-fd2ef58c5323",
+  "duplicate": false,
+  "incident_id": null,
+  "pattern_id": null,
+  "command_ids": [
+    "844c1008-7c1a-45c3-93b9-7d1bfe66432a"
+  ]
+}
+```
+
+## POST /api/v1/mock/medication-tick
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "generated_count": 1,
+  "processed_at": "2026-11-22T08:13:20.250590Z",
+  "mock": true
+}
+```
+
+## GET /api/v1/devices/{device_id}/commands
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "command_id": "844c1008-7c1a-45c3-93b9-7d1bfe66432a",
+      "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "log_id": "8416ba4a-460c-4e1a-8ab7-6626db5c56d1",
+      "voice_id": "TYPE_A",
+      "status": "PENDING",
+      "created_at": "2026-11-22T08:13:20.234053Z",
+      "expires_at": "2026-11-22T08:42:00.000000Z",
+      "acknowledged_at": null
+    }
+  ]
+}
+```
+
+## POST /api/v1/commands/{command_id}/ack
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer gateway-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "status": "SUCCESS"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "command_id": "844c1008-7c1a-45c3-93b9-7d1bfe66432a",
+  "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+  "log_id": "8416ba4a-460c-4e1a-8ab7-6626db5c56d1",
+  "voice_id": "TYPE_A",
+  "status": "SUCCESS",
+  "created_at": "2026-11-22T08:13:20.234053Z",
+  "expires_at": "2026-11-22T08:42:00.000000Z",
+  "acknowledged_at": "2026-11-22T08:13:20.276595Z"
+}
+```
+
+## GET /api/v1/notifications
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "items": [
+    {
+      "notification_id": "a323f5b2-de15-4140-900e-7b416321dd6e",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "user_id": "00000000-0000-4000-8000-000000000002",
+      "source_event_id": "fb087029-dd7f-4b94-8493-71f63b5d68b1",
+      "schedule_id": null,
+      "scheduled_date": null,
+      "notification_type": "PATTERN_ALERT",
+      "title": "생활 패턴 변화",
+      "body": "장시간 누움 증가",
+      "deep_link": "safehome://patterns/3c2f0a17-33a7-430d-a74d-96e6b609ad19",
+      "delivery_status": "MOCK_QUEUED",
+      "created_at": "2026-11-22T08:13:20.159695Z"
+    },
+    {
+      "notification_id": "d2fd882f-cc3e-41c5-be2f-a69069cd9d1b",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "user_id": "00000000-0000-4000-8000-000000000002",
+      "source_event_id": "02d6e52b-e22c-49db-b6e8-9390c75ba8a7",
+      "schedule_id": null,
+      "scheduled_date": null,
+      "notification_type": "FALL_ALERT",
+      "title": "낙상 위험 발생",
+      "body": "압전·ToF·영상 AI 판정",
+      "deep_link": "safehome://incidents/47659b03-6dc6-412d-969d-ac94d60ca3f6",
+      "delivery_status": "MOCK_QUEUED",
+      "created_at": "2026-11-22T08:13:20.127700Z"
+    },
+    {
+      "notification_id": "3ce6b9b6-7a9a-4b4f-b117-bdb035dbbbab",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "user_id": "00000000-0000-4000-8000-000000000002",
+      "source_event_id": "a823f578-bf28-493e-aa7d-e68c5498ee45",
+      "schedule_id": null,
+      "scheduled_date": null,
+      "notification_type": "FALL_ALERT",
+      "title": "카메라 재검증: 낙상 확인",
+      "body": "예시: 카메라 낙상 확인",
+      "deep_link": "safehome://incidents/bfb823c8-d3d6-42c2-8f05-3ddc81ca7c42",
+      "delivery_status": "NO_TOKEN",
+      "created_at": "2026-11-22T08:13:20.011090Z"
+    }
+  ],
+  "mock": true
+}
+```
+
+## DELETE /api/v1/notifications/token/{installation_id}
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer guardian-demo-token"
+}
+```
+
+응답: HTTP 204
+```json
+(본문 없음)
+```
+
+## POST /api/v1/mock/scenarios
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+요청 본문
+```json
+{
+  "senior_id": "00000000-0000-4000-8000-000000000101",
+  "scenario": "DANGER"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "scenario": "DANGER",
+  "event_id": "678f7797-ceb1-4659-a891-54466a5e3809",
+  "result": {
+    "event_id": "678f7797-ceb1-4659-a891-54466a5e3809",
+    "duplicate": false,
+    "incident_id": "eb6fb609-62ab-4eb1-9267-a2195a26de3a",
+    "pattern_id": null,
+    "command_ids": []
+  }
+}
+```
+
+## POST /api/v1/mock/reset
+
+요청 헤더(폐기된 예시 세션 또는 개발용 Mock 토큰)
+```json
+{
+  "Authorization": "Bearer admin-demo-token"
+}
+```
+
+응답: HTTP 200
+```json
+{
+  "reset": true,
+  "message": "가상 데이터를 초기화했습니다. 클라이언트에서 목록을 다시 조회하고 커서를 0으로 초기화하세요."
+}
+```

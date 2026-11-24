@@ -1,0 +1,217 @@
+erDiagram
+    users {
+        TEXT user_id PK
+        TEXT account_id
+        TEXT user_name
+        TEXT password_hash
+        TEXT phone_number
+        TEXT role
+        TEXT created_at
+    }
+    seniors {
+        TEXT senior_id PK
+        TEXT name
+        TEXT timezone
+        TEXT user_id FK
+        TEXT birth_date
+        TEXT address
+        TEXT current_risk_level
+        TEXT last_status_updated_at
+        TEXT status_event_id FK
+    }
+    ingested_events o|..o{ seniors : status_event_id
+    users o|..o| seniors : user_id
+    senior_guardians {
+        TEXT senior_id PK,FK
+        TEXT guardian_id PK,FK
+        TEXT relationship
+        INTEGER is_primary
+    }
+    users ||--o{ senior_guardians : guardian_id
+    seniors ||--o{ senior_guardians : senior_id
+    devices {
+        TEXT device_id PK
+        TEXT senior_id FK
+        TEXT parent_device_id FK
+        TEXT device_type
+        TEXT connection_status
+        TEXT last_heartbeat_at
+        TEXT created_at
+    }
+    devices o|..o{ devices : parent_device_id
+    seniors ||..o{ devices : senior_id
+    device_logs {
+        TEXT log_id PK
+        TEXT device_id FK
+        TEXT status
+        TEXT reason
+        TEXT occurred_at
+    }
+    devices ||..o{ device_logs : device_id
+    ingested_events {
+        TEXT event_id PK
+        TEXT device_id FK
+        TEXT senior_id FK
+        TEXT event_type
+        TEXT occurred_at
+        TEXT received_at
+        TEXT payload_json
+    }
+    seniors ||..o{ ingested_events : senior_id
+    devices ||..o{ ingested_events : device_id
+    sensor_logs {
+        TEXT log_id PK
+        TEXT event_id FK
+        REAL piezo_impact_val
+        INTEGER tof_estimated_height_mm
+        REAL ai_fall_confidence
+    }
+    ingested_events ||..o| sensor_logs : event_id
+    incidents {
+        TEXT incident_id PK
+        TEXT event_id FK
+        TEXT senior_id FK
+        TEXT event_time
+        TEXT risk_level
+        TEXT summary
+        TEXT status
+        TEXT created_at
+    }
+    seniors ||..o{ incidents : senior_id
+    ingested_events ||..o| incidents : event_id
+    incident_details {
+        TEXT incident_id PK,FK
+        TEXT sensor_log_id FK
+        INTEGER gesture_cancelled
+        TEXT snapshot_image_url
+    }
+    sensor_logs ||..o{ incident_details : sensor_log_id
+    incidents ||--o| incident_details : incident_id
+    voice_assets {
+        TEXT voice_id PK
+        TEXT label
+        TEXT text
+        INTEGER is_active
+    }
+    medication_schedules {
+        TEXT schedule_id PK
+        TEXT senior_id FK
+        TEXT medication_name
+        TEXT med_time
+        TEXT days_of_week_json
+        TEXT voice_id FK
+        INTEGER activity_window_minutes
+        INTEGER is_active
+        TEXT created_at
+        TEXT updated_at
+        TEXT deleted_at
+    }
+    voice_assets ||..o{ medication_schedules : voice_id
+    seniors ||..o{ medication_schedules : senior_id
+    medication_logs {
+        TEXT log_id PK
+        TEXT schedule_id FK
+        TEXT source_event_id FK
+        TEXT scheduled_date
+        TEXT activity_detected_at
+        TEXT voice_played_at
+        TEXT play_status
+    }
+    ingested_events o|..o{ medication_logs : source_event_id
+    medication_schedules ||..o{ medication_logs : schedule_id
+    speaker_commands {
+        TEXT command_id PK
+        TEXT device_id FK
+        TEXT log_id FK
+        TEXT voice_id FK
+        TEXT status
+        TEXT created_at
+        TEXT expires_at
+        TEXT acknowledged_at
+    }
+    voice_assets ||..o{ speaker_commands : voice_id
+    medication_logs ||..o| speaker_commands : log_id
+    devices ||..o{ speaker_commands : device_id
+    lifestyle_patterns {
+        TEXT pattern_id PK
+        TEXT event_id FK
+        TEXT senior_id FK
+        TEXT pattern_type
+        TEXT observation_start_time
+        TEXT observation_end_time
+        REAL metric_value
+        TEXT metric_unit
+        TEXT summary_note
+        INTEGER is_anomaly
+        TEXT created_at
+    }
+    seniors ||..o{ lifestyle_patterns : senior_id
+    ingested_events ||..o| lifestyle_patterns : event_id
+    push_tokens {
+        TEXT token_id PK
+        TEXT user_id FK
+        TEXT installation_id
+        TEXT provider
+        TEXT push_token
+        TEXT device_os
+        TEXT updated_at
+    }
+    users ||..o{ push_tokens : user_id
+    notifications {
+        TEXT notification_id PK
+        TEXT senior_id FK
+        TEXT user_id FK
+        TEXT source_event_id FK
+        TEXT schedule_id FK
+        TEXT scheduled_date
+        TEXT notification_type
+        TEXT title
+        TEXT body
+        TEXT deep_link
+        TEXT delivery_status
+        TEXT created_at
+    }
+    medication_schedules o|..o{ notifications : schedule_id
+    ingested_events o|..o{ notifications : source_event_id
+    users ||..o{ notifications : user_id
+    seniors ||..o{ notifications : senior_id
+    event_feed {
+        INTEGER cursor PK
+        TEXT event_id
+        TEXT senior_id FK
+        TEXT event_type
+        TEXT occurred_at
+        TEXT data_json
+    }
+    seniors ||..o{ event_feed : senior_id
+    idempotency_keys {
+        TEXT principal_id PK,FK
+        TEXT route_key PK
+        TEXT idempotency_key PK
+        TEXT request_hash
+        TEXT response_json
+        TEXT created_at
+    }
+    users ||--o{ idempotency_keys : principal_id
+    auth_sessions {
+        TEXT session_id PK
+        TEXT user_id FK
+        TEXT token_hash
+        TEXT created_at
+        TEXT expires_at
+        TEXT revoked_at
+    }
+    users ||..o{ auth_sessions : user_id
+    auth_login_attempts {
+        TEXT scope_key PK
+        INTEGER fail_count
+        TEXT window_started_at
+    }
+    incident_assessment_events {
+        INTEGER assessment_seq PK
+        TEXT event_id FK
+        TEXT incident_id FK
+        INTEGER applied
+    }
+    incidents ||..o{ incident_assessment_events : incident_id
+    ingested_events ||..o| incident_assessment_events : event_id

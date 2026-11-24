@@ -1,0 +1,21 @@
+{
+  "erd-relationships": {
+    "tables": 21,
+    "displayed_columns": 53,
+    "rendered_foreign_keys": 33,
+    "finite_coordinates": true
+  },
+  "erd-detailed": {
+    "tables": 21,
+    "displayed_columns": 141,
+    "rendered_foreign_keys": 33,
+    "finite_coordinates": true
+  },
+  "drawDB": {
+    "tables": 21,
+    "columns": 141,
+    "foreign_keys": 33,
+    "columns_keys_nullability_uniqueness_fk_endpoints": "PASS"
+  },
+  "version_and_xml": "PASS"
+}

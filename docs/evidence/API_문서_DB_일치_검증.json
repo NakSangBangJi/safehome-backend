@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-22",
+  "version": "1.5.0",
+  "code_openapi_equal": true,
+  "examples": 36,
+  "validated_requests": 13,
+  "validated_responses": 32,
+  "sql_tables": 21,
+  "sql_columns": 141,
+  "sql_foreign_keys": 33,
+  "dictionary_fields": 141,
+  "portable_relative_links_checked": 192,
+  "missing_relative_links": [],
+  "schema_copy_same_text": true
+}

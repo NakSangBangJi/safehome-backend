@@ -1,0 +1,230 @@
+{
+  "accounts": {
+    "guardian": {
+      "account_id": "guardian-demo",
+      "access_token": "guardian-demo-token"
+    },
+    "admin": {
+      "account_id": "admin-demo",
+      "access_token": "admin-demo-token"
+    },
+    "senior": {
+      "account_id": "senior-demo",
+      "access_token": "senior-demo-token",
+      "senior_id": "00000000-0000-4000-8000-000000000101"
+    },
+    "gateway": {
+      "access_token": "gateway-demo-token",
+      "gateway_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "senior_id": "00000000-0000-4000-8000-000000000101"
+    }
+  },
+  "seniors": [
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "name": "김안심(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "name": "이주의(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "name": "박위험(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    },
+    {
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "name": "최빈목록(가상)",
+      "timezone": "Asia/Seoul",
+      "phone_number": null
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "8acf27c3-268f-5b26-a014-a8316ca6cf14",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "CAMERA",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": null,
+      "device_type": "GATEWAY",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "2d259f0f-7cdf-5e3e-880a-57bb58051c4a",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "PIEZO_MAT",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "b556fa10-3106-5855-9528-748d33e5d204",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "SPEAKER",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "dc7b5683-383f-5544-9f16-0a7ea989c5b4",
+      "senior_id": "00000000-0000-4000-8000-000000000101",
+      "parent_device_id": "dc7ae1e3-6c16-55d0-9141-6c6ba993ede2",
+      "device_type": "TOF_SENSOR",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "d7db5e3e-1da9-59a5-bc1a-e200420335a2",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "parent_device_id": "c785bfe3-a9fc-599c-9cd1-6045449bde53",
+      "device_type": "CAMERA",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "c785bfe3-a9fc-599c-9cd1-6045449bde53",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "parent_device_id": null,
+      "device_type": "GATEWAY",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "32611595-5324-5a2f-8235-7843c634282f",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "parent_device_id": "c785bfe3-a9fc-599c-9cd1-6045449bde53",
+      "device_type": "PIEZO_MAT",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "f88e150a-78db-5883-9f93-4a51594d8190",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "parent_device_id": "c785bfe3-a9fc-599c-9cd1-6045449bde53",
+      "device_type": "SPEAKER",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "e99170d6-b8fd-533c-a5e6-3e71626eb900",
+      "senior_id": "00000000-0000-4000-8000-000000000102",
+      "parent_device_id": "c785bfe3-a9fc-599c-9cd1-6045449bde53",
+      "device_type": "TOF_SENSOR",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "f3ddb23a-c0f5-5880-b31d-3483e17cc091",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "parent_device_id": "2ac669b8-08b1-56b2-a20e-4a482cd2cb1a",
+      "device_type": "CAMERA",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "2ac669b8-08b1-56b2-a20e-4a482cd2cb1a",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "parent_device_id": null,
+      "device_type": "GATEWAY",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "6dba54a7-d3bd-56a2-bf98-53342c75d4f8",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "parent_device_id": "2ac669b8-08b1-56b2-a20e-4a482cd2cb1a",
+      "device_type": "PIEZO_MAT",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "77f0c7bb-1329-5e7a-a211-bf049a67f3bb",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "parent_device_id": "2ac669b8-08b1-56b2-a20e-4a482cd2cb1a",
+      "device_type": "SPEAKER",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "c05fb649-d2eb-5fb5-b2a9-7cb85f562999",
+      "senior_id": "00000000-0000-4000-8000-000000000103",
+      "parent_device_id": "2ac669b8-08b1-56b2-a20e-4a482cd2cb1a",
+      "device_type": "TOF_SENSOR",
+      "connection_status": "ONLINE",
+      "last_heartbeat_at": "2026-11-22T08:13:19.211354Z",
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "e80ff72a-b6f5-5bb1-9148-8bac8a7c98e5",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "parent_device_id": "aecbe03e-31c0-59c3-8e7b-486d9fcb7b78",
+      "device_type": "CAMERA",
+      "connection_status": "OFFLINE",
+      "last_heartbeat_at": null,
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "aecbe03e-31c0-59c3-8e7b-486d9fcb7b78",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "parent_device_id": null,
+      "device_type": "GATEWAY",
+      "connection_status": "OFFLINE",
+      "last_heartbeat_at": null,
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "d62e405a-9b2e-5644-b069-e3c42b42ef13",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "parent_device_id": "aecbe03e-31c0-59c3-8e7b-486d9fcb7b78",
+      "device_type": "PIEZO_MAT",
+      "connection_status": "OFFLINE",
+      "last_heartbeat_at": null,
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "3dc66584-80b7-5abd-aad3-4a345fe1a5b6",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "parent_device_id": "aecbe03e-31c0-59c3-8e7b-486d9fcb7b78",
+      "device_type": "SPEAKER",
+      "connection_status": "OFFLINE",
+      "last_heartbeat_at": null,
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    },
+    {
+      "device_id": "a94ab0c0-ce16-5f5a-84be-b6f63b7af588",
+      "senior_id": "00000000-0000-4000-8000-000000000104",
+      "parent_device_id": "aecbe03e-31c0-59c3-8e7b-486d9fcb7b78",
+      "device_type": "TOF_SENSOR",
+      "connection_status": "OFFLINE",
+      "last_heartbeat_at": null,
+      "created_at": "2026-11-22T08:13:19.211354Z"
+    }
+  ]
+}

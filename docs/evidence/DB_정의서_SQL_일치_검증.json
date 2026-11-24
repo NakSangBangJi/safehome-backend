@@ -1,0 +1,15 @@
+{
+  "tables": 21,
+  "columns": 141,
+  "foreignKeys": 33,
+  "explicitIndexes": 9,
+  "checks": 28,
+  "sheets": 2,
+  "nativeTablesWithFilters": 8,
+  "frozenHeaderAndIdColumns": true,
+  "savedCellsExactlyMatchPayload": true,
+  "sqlMetadataVerified": true,
+  "formulaErrors": 0,
+  "numericExamplesTyped": true,
+  "sourceSha256": "63896dc8bed8abc2aae98dac955dd81f4c0949fd7f90d212e9e6e14cb079881a"
+}

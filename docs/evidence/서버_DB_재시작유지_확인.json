@@ -1,0 +1,47 @@
+{
+  "health": {
+    "status": "ok",
+    "mode": "mock",
+    "version": "1.5.0"
+  },
+  "journal_mode": "wal",
+  "foreign_keys": 1,
+  "busy_timeout_ms": 5000,
+  "user_version": 4,
+  "before_restart": {
+    "medication_name": "중간발표 확인약",
+    "med_time": "09:15",
+    "days_of_week": [
+      "MON",
+      "WED",
+      "FRI"
+    ],
+    "voice_id": "TYPE_A",
+    "activity_window_minutes": 30,
+    "is_active": true,
+    "schedule_id": "3ea51cd9-2db4-4a36-a365-e132c6c9aaec",
+    "senior_id": "00000000-0000-4000-8000-000000000101",
+    "timezone": "Asia/Seoul",
+    "created_at": "2026-11-22T08:13:26.198137Z",
+    "updated_at": "2026-11-22T08:13:26.198137Z"
+  },
+  "database_scope": "별도 시험용 DB; 개인 DB는 사용하지 않음",
+  "after_restart": {
+    "medication_name": "중간발표 확인약",
+    "med_time": "09:15",
+    "days_of_week": [
+      "MON",
+      "WED",
+      "FRI"
+    ],
+    "voice_id": "TYPE_A",
+    "activity_window_minutes": 30,
+    "is_active": true,
+    "schedule_id": "3ea51cd9-2db4-4a36-a365-e132c6c9aaec",
+    "senior_id": "00000000-0000-4000-8000-000000000101",
+    "timezone": "Asia/Seoul",
+    "created_at": "2026-11-22T08:13:26.198137Z",
+    "updated_at": "2026-11-22T08:13:26.198137Z"
+  },
+  "same_schedule_after_restart": true
+}

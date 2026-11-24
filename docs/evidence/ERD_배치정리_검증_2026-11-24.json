@@ -1,0 +1,33 @@
+{
+  "layout_date": "2026-11-24",
+  "schema_baseline": "2026-11-22",
+  "version": "1.5.0",
+  "layouts": [
+    {
+      "name": "erd",
+      "tables": 9,
+      "edges": 9,
+      "orthogonal": true,
+      "tableCrossings": 0,
+      "lineCrossings": 0
+    },
+    {
+      "name": "erd-relationships",
+      "tables": 21,
+      "displayed_columns": 53,
+      "edges": 33,
+      "tableCrossings": 0,
+      "overlappingConnectors": 0,
+      "localReferences": true
+    },
+    {
+      "name": "erd-detailed",
+      "tables": 21,
+      "displayed_columns": 141,
+      "edges": 33,
+      "tableCrossings": 0,
+      "overlappingConnectors": 0,
+      "localReferences": true
+    }
+  ]
+}

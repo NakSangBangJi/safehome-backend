@@ -1,0 +1,2907 @@
+{
+  "tables": [
+    {
+      "id": "sh_49d64ee8d258519eb533ac",
+      "name": "users",
+      "x": 900,
+      "y": 0,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_892116bc0f525fe0924e8f",
+          "name": "user_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_33625eb383205a04a4830d",
+          "name": "account_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_c5197694eafa5380a93565",
+          "name": "user_name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_883a0d159a185870a6add3",
+          "name": "password_hash",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_774276eea79d5e38b2e7d3",
+          "name": "phone_number",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_2396e256f0c25c69b8b80f",
+          "name": "role",
+          "type": "TEXT",
+          "default": "",
+          "check": "(role IN ('ADMIN','GUARDIAN','SENIOR'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_1f80ba089f45598b967c4b",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "사용자 계정\nSQL의 CHECK: role IN ('ADMIN','GUARDIAN','SENIOR')",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_c8e273e83fd154aeb807c1",
+      "name": "seniors",
+      "x": 900,
+      "y": 430,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_cadfcecde5e65a40854590",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_626899cd246350498cbe6b",
+          "name": "name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_539b5fed4def5f7e8dbab4",
+          "name": "timezone",
+          "type": "TEXT",
+          "default": "'Asia/Seoul'",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f7c3c946bf3f532da13ef7",
+          "name": "user_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6ecf73c8e5a25a9a916863",
+          "name": "birth_date",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_258c1f84fbff5dc9abbfe8",
+          "name": "address",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_970c6dbcbd96546f86cc1c",
+          "name": "current_risk_level",
+          "type": "TEXT",
+          "default": "'NORMAL'",
+          "check": "(current_risk_level IN ('NORMAL','CAUTION','DANGER'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_be7248a010be584ea478cb",
+          "name": "last_status_updated_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_0bb505a005645d2fbc24f9",
+          "name": "status_event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "어르신과 현재 상태\nSQL의 CHECK: current_risk_level IN ('NORMAL','CAUTION','DANGER')",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_dc31ec1e69d1549c85ab75",
+      "name": "senior_guardians",
+      "x": 300,
+      "y": 400,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_9c93d3852ba75ba082907c",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_a3b3c3118ef35afe9812c9",
+          "name": "guardian_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_5ba6874286a6558c9e6f26",
+          "name": "relationship",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_40eaae379db653a8a9738d",
+          "name": "is_primary",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(is_primary IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "어르신·보호자 연결\nSQL의 CHECK: is_primary IN (0,1)",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_793c6cf19c5054e696e382",
+      "name": "devices",
+      "x": 300,
+      "y": 1000,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_13f452ab0d3855dcb35349",
+          "name": "device_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_2ebdad454ad550ec9227bb",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_e0bdcbf1228955c394d72b",
+          "name": "parent_device_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_93ec7034f08656b48f6a40",
+          "name": "device_type",
+          "type": "TEXT",
+          "default": "",
+          "check": "(device_type IN ('GATEWAY','PIEZO_MAT','TOF_SENSOR','CAMERA','SPEAKER'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_0cafb0a37ece5464b32ef3",
+          "name": "connection_status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(connection_status IN ('ONLINE','OFFLINE'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_a620a596c80d53ce8e6674",
+          "name": "last_heartbeat_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_90274d9ca4b3556180c295",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "장치와 게이트웨이 소속\nSQL의 CHECK: device_type IN ('GATEWAY','PIEZO_MAT','TOF_SENSOR','CAMERA','SPEAKER'); connection_status IN ('ONLINE','OFFLINE')",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_devices_senior",
+          "unique": false,
+          "fields": [
+            "senior_id"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_13b387df8da15ce18366fc",
+      "name": "device_logs",
+      "x": -300,
+      "y": 1000,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_cc16103128d854a888ae01",
+          "name": "log_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_73c30eb57b3658f3ace2b4",
+          "name": "device_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_da5392dc0dc3504b89593d",
+          "name": "status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(status IN ('ONLINE','OFFLINE'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f775e5add29f5d44a8acad",
+          "name": "reason",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_72e9949b21c35e92b6c6bc",
+          "name": "occurred_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "장치 연결 기록\nSQL의 CHECK: status IN ('ONLINE','OFFLINE')",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_ca7e64bdcf5b5caabbc286",
+      "name": "ingested_events",
+      "x": 1500,
+      "y": 430,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_30fd9d02b46858ddb40e15",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_5550e8f5c1be5350a694cd",
+          "name": "device_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_9980812363d850f5b34cb8",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_692f2ebb7c3b5ba3808c4a",
+          "name": "event_type",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_39a2df45403f5930bce1fa",
+          "name": "occurred_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_131f153b5ee65ee68ae03a",
+          "name": "received_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_89ec3936499c561e89d04e",
+          "name": "payload_json",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "수신 이벤트 원본\nSQL의 CHECK: ",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_events_senior_time",
+          "unique": false,
+          "fields": [
+            "senior_id",
+            "occurred_at"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_aa4660b452305807be3da5",
+      "name": "sensor_logs",
+      "x": 1500,
+      "y": 1060,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_f9d63cdb39b656918b0e40",
+          "name": "log_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_48be0e4c67e45cf4933e9e",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_475da24a2aae504d950dbd",
+          "name": "piezo_impact_val",
+          "type": "REAL",
+          "default": "",
+          "check": "(piezo_impact_val >= 0)",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_e7581aac2eff53bbb2f8a1",
+          "name": "tof_estimated_height_mm",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(tof_estimated_height_mm >= 0)",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6dd4a12ffd9e51f587d532",
+          "name": "ai_fall_confidence",
+          "type": "REAL",
+          "default": "",
+          "check": "(ai_fall_confidence BETWEEN 0 AND 1)",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "센서·AI 요약값\nSQL의 CHECK: piezo_impact_val >= 0; tof_estimated_height_mm >= 0; ai_fall_confidence BETWEEN 0 AND 1",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_e29bc5ce21b4597d8b371c",
+      "name": "incidents",
+      "x": 2100,
+      "y": 1060,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_b52a09bebef357b983125d",
+          "name": "incident_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_ff04b0f410eb53918b89c3",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_517ce26aef5656a0802226",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f5a6c07e640e58c4876fff",
+          "name": "event_time",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_38b777dab0c153e3bb4c7b",
+          "name": "risk_level",
+          "type": "TEXT",
+          "default": "",
+          "check": "(risk_level IN ('CAUTION','DANGER'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_37f213fb43a25cd8918f6d",
+          "name": "summary",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6b931383215e5a1e9db426",
+          "name": "status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(status IN ('OPEN','CANCELLED'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_1c91310bb144568388c026",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "사고 이력\nSQL의 CHECK: risk_level IN ('CAUTION','DANGER'); status IN ('OPEN','CANCELLED')",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_incidents_senior_time",
+          "unique": false,
+          "fields": [
+            "senior_id",
+            "event_time",
+            "incident_id"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_f2503d4d8a635eeb83141b",
+      "name": "incident_details",
+      "x": 2100,
+      "y": 1650,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_1796a6854ebe569e9e36df",
+          "name": "incident_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_197d84b92fa95d4b874188",
+          "name": "sensor_log_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_94b89f6607e554c1bbd881",
+          "name": "gesture_cancelled",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(gesture_cancelled IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_a6509ddfc63553e68c1986",
+          "name": "snapshot_image_url",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "사고 판단 근거\nSQL의 CHECK: gesture_cancelled IN (0,1)",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_bf047ff32381588ca35997",
+      "name": "voice_assets",
+      "x": 900,
+      "y": 1880,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_127ff037f2c55b3fb8a9e8",
+          "name": "voice_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_384751cf9d8357169c47cd",
+          "name": "label",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_432de1a571ff5323a00b82",
+          "name": "text",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_b4ab6b2f8b985a06b3c92b",
+          "name": "is_active",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(is_active IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "안내 문구·음성 ID\nSQL의 CHECK: is_active IN (0,1)",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_913224f55ad8513dac72ef",
+      "name": "medication_schedules",
+      "x": 900,
+      "y": 1140,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_5a0fae42da795622964663",
+          "name": "schedule_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_40bb6613cb4551ef913417",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_0022f4edc76358c9822238",
+          "name": "medication_name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_be6e56ca53bd5d2585a25d",
+          "name": "med_time",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_920349e394955446a0cf69",
+          "name": "days_of_week_json",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_56800ac6c8775975b135fb",
+          "name": "voice_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6a25183795aa541c89b28c",
+          "name": "activity_window_minutes",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(activity_window_minutes BETWEEN 1 AND 180)",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_a8a9e628f5b55b769c48c8",
+          "name": "is_active",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(is_active IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_ea6cee4874a057068a4d70",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_84bd30047cc05abcb8287a",
+          "name": "updated_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_937c2047c3135220a47363",
+          "name": "deleted_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "복약 일정\nSQL의 CHECK: json_valid(days_of_week_json); activity_window_minutes BETWEEN 1 AND 180; is_active IN (0,1)",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_schedules_senior",
+          "unique": false,
+          "fields": [
+            "senior_id",
+            "deleted_at",
+            "med_time"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_e5649cf167e95ad9b8e356",
+      "name": "medication_logs",
+      "x": 1500,
+      "y": 1740,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_831d9198c75a5c399b5ba3",
+          "name": "log_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_69b8ea4f6b3a50e19b9655",
+          "name": "schedule_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_20893fa3c4095eba848ce9",
+          "name": "source_event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_7325de02e655557699596b",
+          "name": "scheduled_date",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_4725fd89a5d35dd9969ff7",
+          "name": "activity_detected_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_9fd436a548065aef95f7d5",
+          "name": "voice_played_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_e0ee0a65617454beb2875c",
+          "name": "play_status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(play_status IN ('PENDING','SUCCESS','NO_ACTIVITY','FAILED'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "안내 처리 이력\nSQL의 CHECK: play_status IN ('PENDING','SUCCESS','NO_ACTIVITY','FAILED')",
+      "indices": [
+        {
+          "id": 0,
+          "name": "uq_medication_logs_schedule_id_scheduled_date",
+          "unique": true,
+          "fields": [
+            "schedule_id",
+            "scheduled_date"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_4618386a6eea592ea7bb2a",
+      "name": "speaker_commands",
+      "x": 1500,
+      "y": 2340,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_b65957c5fc5f53d78af148",
+          "name": "command_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_1a0defa6f6c85057a1904d",
+          "name": "device_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_cace8d019f7b567486b40d",
+          "name": "log_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_b342ed586c8a5d67b6c21d",
+          "name": "voice_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_c30a3af0df795a97968587",
+          "name": "status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(status IN ('PENDING','SUCCESS','FAILED','EXPIRED'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_be2fc85a6b185e26a3e159",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_fcc07904433e5feebe325a",
+          "name": "expires_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f1bf4829383a5457bd8649",
+          "name": "acknowledged_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "스피커 명령·결과\nSQL의 CHECK: status IN ('PENDING','SUCCESS','FAILED','EXPIRED')",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_commands_device",
+          "unique": false,
+          "fields": [
+            "device_id",
+            "status",
+            "expires_at"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_04439f3d318d57c1b9e995",
+      "name": "lifestyle_patterns",
+      "x": 2100,
+      "y": 380,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_97e762c5ab20513a82b048",
+          "name": "pattern_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_cbd0cf7fc34c5a1db173f0",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_7ea25cd65b9d5ba9afe6d6",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_3a601d7467da5fada4bfde",
+          "name": "pattern_type",
+          "type": "TEXT",
+          "default": "",
+          "check": "(pattern_type IN ('NIGHT_ACTIVITY_SURGE','PROLONGED_LYING','INACTIVE'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_dc71a2d60e7757b4bb1be5",
+          "name": "observation_start_time",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_26de168f5e1a502a9fa7c4",
+          "name": "observation_end_time",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_4afca35eba0b51c3bb52d4",
+          "name": "metric_value",
+          "type": "REAL",
+          "default": "",
+          "check": "(metric_value >= 0)",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_2b52616fdaf05863aa8887",
+          "name": "metric_unit",
+          "type": "TEXT",
+          "default": "",
+          "check": "(metric_unit IN ('count','minutes'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_709926255d585781937f4b",
+          "name": "summary_note",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_933e7249dd7a57b2bbb06c",
+          "name": "is_anomaly",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(is_anomaly IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_d2262dde62c85c039e5a07",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "생활 패턴 결과\nSQL의 CHECK: pattern_type IN ('NIGHT_ACTIVITY_SURGE','PROLONGED_LYING','INACTIVE'); metric_value >= 0; metric_unit IN ('count','minutes'); is_anomaly IN (0,1)",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_patterns_senior_time",
+          "unique": false,
+          "fields": [
+            "senior_id",
+            "observation_start_time"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_6fcc839c9680594bab8e1e",
+      "name": "push_tokens",
+      "x": 300,
+      "y": 2410,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_7114bb9e3e465bd3b59e02",
+          "name": "token_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_450f88528f0656d1b3d800",
+          "name": "user_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_5d161c338c4a52148b7a06",
+          "name": "installation_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f5232cf1060d5a89ab40bc",
+          "name": "provider",
+          "type": "TEXT",
+          "default": "",
+          "check": "(provider IN ('EXPO','FCM'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_7223c3ae3d15581899e288",
+          "name": "push_token",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_9778246a21e25ec19347ba",
+          "name": "device_os",
+          "type": "TEXT",
+          "default": "",
+          "check": "(device_os IN ('ANDROID','IOS'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_8dab4dc2bb4d5df3bdd884",
+          "name": "updated_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "앱 푸시 토큰\nSQL의 CHECK: provider IN ('EXPO','FCM'); device_os IN ('ANDROID','IOS')",
+      "indices": [
+        {
+          "id": 0,
+          "name": "uq_push_tokens_provider_push_token",
+          "unique": true,
+          "fields": [
+            "provider",
+            "push_token"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "uq_push_tokens_user_id_installation_id",
+          "unique": true,
+          "fields": [
+            "user_id",
+            "installation_id"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_239ab1fca7745688b7797b",
+      "name": "notifications",
+      "x": 300,
+      "y": 1770,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_afef3e9624c75c14b1f3d4",
+          "name": "notification_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_706bec40779b5e0d8a32ef",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_4a5aacafde4954918a8034",
+          "name": "user_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_8b0c30dde3bc5eae929b83",
+          "name": "source_event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_531a5daeebac5e8bbee1b2",
+          "name": "schedule_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_5795d08762d75bb6b8ceda",
+          "name": "scheduled_date",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_855d44dd816d5defb09148",
+          "name": "notification_type",
+          "type": "TEXT",
+          "default": "",
+          "check": "(notification_type IN ('FALL_ALERT','PATTERN_ALERT','MEDICATION_REMINDER'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_c5d1ef4a8ef75388a77d3d",
+          "name": "title",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_df6c4fb0867155adbf1c01",
+          "name": "body",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_820aa41fbafd50b8adeab1",
+          "name": "deep_link",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_d701af16d09e533893a4d2",
+          "name": "delivery_status",
+          "type": "TEXT",
+          "default": "",
+          "check": "(delivery_status IN ('MOCK_QUEUED','NO_TOKEN'))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_7a1afaccddf3597cb5fc24",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "모의 알림 생성 기록\nSQL의 CHECK: notification_type IN ('FALL_ALERT','PATTERN_ALERT','MEDICATION_REMINDER'); delivery_status IN ('MOCK_QUEUED','NO_TOKEN'); (notification_type='MEDICATION_REMINDER' AND schedule_id IS NOT NULL AND scheduled_date IS NOT NULL AND source_event_id IS NULL)\n    OR (notification_type IN ('FALL_ALERT','PATTERN_ALERT') AND source_event_id IS NOT NULL AND schedule_id IS NULL AND scheduled_date IS NULL)",
+      "indices": [
+        {
+          "id": 0,
+          "name": "uq_notifications_user_id_schedule_id_scheduled_date_notification_type",
+          "unique": true,
+          "fields": [
+            "user_id",
+            "schedule_id",
+            "scheduled_date",
+            "notification_type"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "uq_notifications_user_id_source_event_id_notification_type",
+          "unique": true,
+          "fields": [
+            "user_id",
+            "source_event_id",
+            "notification_type"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_5a2b02c0846c564ca86aa3",
+      "name": "event_feed",
+      "x": 900,
+      "y": 2470,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_1dc2e003f48b5ef3b55814",
+          "name": "cursor",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": ""
+        },
+        {
+          "id": "sh_9cf51276213c5c81a7486d",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_b4f533e93d9e5b09abf423",
+          "name": "senior_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_5b62d354c71c59b7b62095",
+          "name": "event_type",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_bc97d4280ae85b0d9b0838",
+          "name": "occurred_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6fe20262837956ffafd382",
+          "name": "data_json",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "실시간·재연결 이력\nSQL의 CHECK: ",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_feed_senior_cursor",
+          "unique": false,
+          "fields": [
+            "senior_id",
+            "cursor"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_6e69b5cd92d85398abe377",
+      "name": "idempotency_keys",
+      "x": 900,
+      "y": 2930,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_f602380edcaf5a0eb5368a",
+          "name": "principal_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_b8cc774b065d53f2be8247",
+          "name": "route_key",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_87292f1ba6385e5a91550b",
+          "name": "idempotency_key",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_ec10ef4624e05876a0c1e0",
+          "name": "request_hash",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_f32460c63ce65aae9848f0",
+          "name": "response_json",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_d7fe9394c785551cb108fa",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "API 중복 등록 방지\nSQL의 CHECK: ",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_a45aec1c89965809a22517",
+      "name": "auth_sessions",
+      "x": 300,
+      "y": -480,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_b75c1b2ae1345c07b50fd8",
+          "name": "session_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_b2833db7e2475883aa20ba",
+          "name": "user_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_fc0e69ef98255210bd9cf3",
+          "name": "token_hash",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_0fde6a57c9f3571ba7225a",
+          "name": "created_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_6f839de0a9d3505cb0e2aa",
+          "name": "expires_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_a96c547ea0345811b56ef8",
+          "name": "revoked_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": false,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "로그인 세션 [현재 추가 테이블]\nSQL의 CHECK: ",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_auth_sessions_expiry",
+          "unique": false,
+          "fields": [
+            "expires_at"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_ae1c58ce1af15b188f076e",
+      "name": "auth_login_attempts",
+      "x": 900,
+      "y": -480,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_6ee9985a88e659f2b958fd",
+          "name": "scope_key",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_c47cd9c9e8fe530a95c520",
+          "name": "fail_count",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_1d9d64124eef51bfbf607a",
+          "name": "window_started_at",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "로그인 시도 제한 [현재 추가 테이블]\nSQL의 CHECK: ",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    },
+    {
+      "id": "sh_74906ec5ddd553559e81ad",
+      "name": "incident_assessment_events",
+      "x": 2100,
+      "y": 2180,
+      "locked": false,
+      "fields": [
+        {
+          "id": "sh_7fe49b57a743546a801f25",
+          "name": "assessment_seq",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": ""
+        },
+        {
+          "id": "sh_c6d754948b9d504c95682d",
+          "name": "event_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_d8c0fb296bd350f3bd8027",
+          "name": "incident_id",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        },
+        {
+          "id": "sh_74242c65ef90530e985d3d",
+          "name": "applied",
+          "type": "INTEGER",
+          "default": "",
+          "check": "(applied IN (0,1))",
+          "primary": false,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": false,
+          "comment": ""
+        }
+      ],
+      "comment": "1차·최종 판단 연결 [현재 추가 테이블]\nSQL의 CHECK: applied IN (0,1)",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_assessments_incident_seq",
+          "unique": false,
+          "fields": [
+            "incident_id",
+            "assessment_seq"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#29485e",
+      "collapsed": false,
+      "width": 560
+    }
+  ],
+  "relationships": [
+    {
+      "id": "sh_d0b9a2829cd458adb4695b",
+      "name": "fk_seniors_status_event_id",
+      "startTableId": "sh_c8e273e83fd154aeb807c1",
+      "startFieldId": "sh_0bb505a005645d2fbc24f9",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_0bb505a005645d2fbc24f9",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#777777"
+    },
+    {
+      "id": "sh_40d23534a3a952a5bc82b0",
+      "name": "fk_seniors_user_id",
+      "startTableId": "sh_c8e273e83fd154aeb807c1",
+      "startFieldId": "sh_f7c3c946bf3f532da13ef7",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_f7c3c946bf3f532da13ef7",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_479d6939416c53299df19f",
+      "name": "fk_senior_guardians_guardian_id",
+      "startTableId": "sh_dc31ec1e69d1549c85ab75",
+      "startFieldId": "sh_a3b3c3118ef35afe9812c9",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_a3b3c3118ef35afe9812c9",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_5d752ce58062566f81f49f",
+      "name": "fk_senior_guardians_senior_id",
+      "startTableId": "sh_dc31ec1e69d1549c85ab75",
+      "startFieldId": "sh_9c93d3852ba75ba082907c",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_9c93d3852ba75ba082907c",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_6ebe3dbe5efd5815a26741",
+      "name": "fk_devices_parent_device_id",
+      "startTableId": "sh_793c6cf19c5054e696e382",
+      "startFieldId": "sh_e0bdcbf1228955c394d72b",
+      "endTableId": "sh_793c6cf19c5054e696e382",
+      "endFieldId": "sh_13f452ab0d3855dcb35349",
+      "fields": [
+        {
+          "startFieldId": "sh_e0bdcbf1228955c394d72b",
+          "endFieldId": "sh_13f452ab0d3855dcb35349"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_8bd25a133e7d5ac8b9b6dc",
+      "name": "fk_devices_senior_id",
+      "startTableId": "sh_793c6cf19c5054e696e382",
+      "startFieldId": "sh_2ebdad454ad550ec9227bb",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_2ebdad454ad550ec9227bb",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_54ab61a0239c54a897764d",
+      "name": "fk_device_logs_device_id",
+      "startTableId": "sh_13b387df8da15ce18366fc",
+      "startFieldId": "sh_73c30eb57b3658f3ace2b4",
+      "endTableId": "sh_793c6cf19c5054e696e382",
+      "endFieldId": "sh_13f452ab0d3855dcb35349",
+      "fields": [
+        {
+          "startFieldId": "sh_73c30eb57b3658f3ace2b4",
+          "endFieldId": "sh_13f452ab0d3855dcb35349"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_fc79b2fef97a531c93c4e4",
+      "name": "fk_ingested_events_senior_id",
+      "startTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "startFieldId": "sh_9980812363d850f5b34cb8",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_9980812363d850f5b34cb8",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_dbf8cd8923a953b3b42530",
+      "name": "fk_ingested_events_device_id",
+      "startTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "startFieldId": "sh_5550e8f5c1be5350a694cd",
+      "endTableId": "sh_793c6cf19c5054e696e382",
+      "endFieldId": "sh_13f452ab0d3855dcb35349",
+      "fields": [
+        {
+          "startFieldId": "sh_5550e8f5c1be5350a694cd",
+          "endFieldId": "sh_13f452ab0d3855dcb35349"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_486619feac05594dbf59a9",
+      "name": "fk_sensor_logs_event_id",
+      "startTableId": "sh_aa4660b452305807be3da5",
+      "startFieldId": "sh_48be0e4c67e45cf4933e9e",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_48be0e4c67e45cf4933e9e",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_01fc788e379850bb937329",
+      "name": "fk_incidents_senior_id",
+      "startTableId": "sh_e29bc5ce21b4597d8b371c",
+      "startFieldId": "sh_517ce26aef5656a0802226",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_517ce26aef5656a0802226",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_6ed078d6e45f57efaf52db",
+      "name": "fk_incidents_event_id",
+      "startTableId": "sh_e29bc5ce21b4597d8b371c",
+      "startFieldId": "sh_ff04b0f410eb53918b89c3",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_ff04b0f410eb53918b89c3",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_144fa7f9e96a5ec1a8c2e6",
+      "name": "fk_incident_details_sensor_log_id",
+      "startTableId": "sh_f2503d4d8a635eeb83141b",
+      "startFieldId": "sh_197d84b92fa95d4b874188",
+      "endTableId": "sh_aa4660b452305807be3da5",
+      "endFieldId": "sh_f9d63cdb39b656918b0e40",
+      "fields": [
+        {
+          "startFieldId": "sh_197d84b92fa95d4b874188",
+          "endFieldId": "sh_f9d63cdb39b656918b0e40"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_f455d535684756e4bde553",
+      "name": "fk_incident_details_incident_id",
+      "startTableId": "sh_f2503d4d8a635eeb83141b",
+      "startFieldId": "sh_1796a6854ebe569e9e36df",
+      "endTableId": "sh_e29bc5ce21b4597d8b371c",
+      "endFieldId": "sh_b52a09bebef357b983125d",
+      "fields": [
+        {
+          "startFieldId": "sh_1796a6854ebe569e9e36df",
+          "endFieldId": "sh_b52a09bebef357b983125d"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_180f2434da0c5394b6d821",
+      "name": "fk_medication_schedules_voice_id",
+      "startTableId": "sh_913224f55ad8513dac72ef",
+      "startFieldId": "sh_56800ac6c8775975b135fb",
+      "endTableId": "sh_bf047ff32381588ca35997",
+      "endFieldId": "sh_127ff037f2c55b3fb8a9e8",
+      "fields": [
+        {
+          "startFieldId": "sh_56800ac6c8775975b135fb",
+          "endFieldId": "sh_127ff037f2c55b3fb8a9e8"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_ad7374f5697e5f4e9478a5",
+      "name": "fk_medication_schedules_senior_id",
+      "startTableId": "sh_913224f55ad8513dac72ef",
+      "startFieldId": "sh_40bb6613cb4551ef913417",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_40bb6613cb4551ef913417",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_1524004434fd58fc8b6b4f",
+      "name": "fk_medication_logs_source_event_id",
+      "startTableId": "sh_e5649cf167e95ad9b8e356",
+      "startFieldId": "sh_20893fa3c4095eba848ce9",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_20893fa3c4095eba848ce9",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_e2137c0d6b9e58218d2f4d",
+      "name": "fk_medication_logs_schedule_id",
+      "startTableId": "sh_e5649cf167e95ad9b8e356",
+      "startFieldId": "sh_69b8ea4f6b3a50e19b9655",
+      "endTableId": "sh_913224f55ad8513dac72ef",
+      "endFieldId": "sh_5a0fae42da795622964663",
+      "fields": [
+        {
+          "startFieldId": "sh_69b8ea4f6b3a50e19b9655",
+          "endFieldId": "sh_5a0fae42da795622964663"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_47ecfd83053953369baddd",
+      "name": "fk_speaker_commands_voice_id",
+      "startTableId": "sh_4618386a6eea592ea7bb2a",
+      "startFieldId": "sh_b342ed586c8a5d67b6c21d",
+      "endTableId": "sh_bf047ff32381588ca35997",
+      "endFieldId": "sh_127ff037f2c55b3fb8a9e8",
+      "fields": [
+        {
+          "startFieldId": "sh_b342ed586c8a5d67b6c21d",
+          "endFieldId": "sh_127ff037f2c55b3fb8a9e8"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_f976becc5c5350b5a90d9a",
+      "name": "fk_speaker_commands_log_id",
+      "startTableId": "sh_4618386a6eea592ea7bb2a",
+      "startFieldId": "sh_cace8d019f7b567486b40d",
+      "endTableId": "sh_e5649cf167e95ad9b8e356",
+      "endFieldId": "sh_831d9198c75a5c399b5ba3",
+      "fields": [
+        {
+          "startFieldId": "sh_cace8d019f7b567486b40d",
+          "endFieldId": "sh_831d9198c75a5c399b5ba3"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_364cd5211e285d5699dfac",
+      "name": "fk_speaker_commands_device_id",
+      "startTableId": "sh_4618386a6eea592ea7bb2a",
+      "startFieldId": "sh_1a0defa6f6c85057a1904d",
+      "endTableId": "sh_793c6cf19c5054e696e382",
+      "endFieldId": "sh_13f452ab0d3855dcb35349",
+      "fields": [
+        {
+          "startFieldId": "sh_1a0defa6f6c85057a1904d",
+          "endFieldId": "sh_13f452ab0d3855dcb35349"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_ab60015cea06556db23895",
+      "name": "fk_lifestyle_patterns_senior_id",
+      "startTableId": "sh_04439f3d318d57c1b9e995",
+      "startFieldId": "sh_7ea25cd65b9d5ba9afe6d6",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_7ea25cd65b9d5ba9afe6d6",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_6b86506e50a15891acce45",
+      "name": "fk_lifestyle_patterns_event_id",
+      "startTableId": "sh_04439f3d318d57c1b9e995",
+      "startFieldId": "sh_cbd0cf7fc34c5a1db173f0",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_cbd0cf7fc34c5a1db173f0",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_c0962cc3cd7b5fe3a4b653",
+      "name": "fk_push_tokens_user_id",
+      "startTableId": "sh_6fcc839c9680594bab8e1e",
+      "startFieldId": "sh_450f88528f0656d1b3d800",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_450f88528f0656d1b3d800",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_f4a3880beb1e5f47a72db3",
+      "name": "fk_notifications_schedule_id",
+      "startTableId": "sh_239ab1fca7745688b7797b",
+      "startFieldId": "sh_531a5daeebac5e8bbee1b2",
+      "endTableId": "sh_913224f55ad8513dac72ef",
+      "endFieldId": "sh_5a0fae42da795622964663",
+      "fields": [
+        {
+          "startFieldId": "sh_531a5daeebac5e8bbee1b2",
+          "endFieldId": "sh_5a0fae42da795622964663"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_f525195f9de95e8a80dd0c",
+      "name": "fk_notifications_source_event_id",
+      "startTableId": "sh_239ab1fca7745688b7797b",
+      "startFieldId": "sh_8b0c30dde3bc5eae929b83",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_8b0c30dde3bc5eae929b83",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_13a366ace7dc574ba624b3",
+      "name": "fk_notifications_user_id",
+      "startTableId": "sh_239ab1fca7745688b7797b",
+      "startFieldId": "sh_4a5aacafde4954918a8034",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_4a5aacafde4954918a8034",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_08512795eda3579ea8b021",
+      "name": "fk_notifications_senior_id",
+      "startTableId": "sh_239ab1fca7745688b7797b",
+      "startFieldId": "sh_706bec40779b5e0d8a32ef",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_706bec40779b5e0d8a32ef",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_792be11c866751768e853a",
+      "name": "fk_event_feed_senior_id",
+      "startTableId": "sh_5a2b02c0846c564ca86aa3",
+      "startFieldId": "sh_b4f533e93d9e5b09abf423",
+      "endTableId": "sh_c8e273e83fd154aeb807c1",
+      "endFieldId": "sh_cadfcecde5e65a40854590",
+      "fields": [
+        {
+          "startFieldId": "sh_b4f533e93d9e5b09abf423",
+          "endFieldId": "sh_cadfcecde5e65a40854590"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_237f599fd40a5cf885d344",
+      "name": "fk_idempotency_keys_principal_id",
+      "startTableId": "sh_6e69b5cd92d85398abe377",
+      "startFieldId": "sh_f602380edcaf5a0eb5368a",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_f602380edcaf5a0eb5368a",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_7bc6d11bc1b05b8f9321e9",
+      "name": "fk_auth_sessions_user_id",
+      "startTableId": "sh_a45aec1c89965809a22517",
+      "startFieldId": "sh_b2833db7e2475883aa20ba",
+      "endTableId": "sh_49d64ee8d258519eb533ac",
+      "endFieldId": "sh_892116bc0f525fe0924e8f",
+      "fields": [
+        {
+          "startFieldId": "sh_b2833db7e2475883aa20ba",
+          "endFieldId": "sh_892116bc0f525fe0924e8f"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_9253f4e794a15bef86be91",
+      "name": "fk_incident_assessment_events_incident_id",
+      "startTableId": "sh_74906ec5ddd553559e81ad",
+      "startFieldId": "sh_d8c0fb296bd350f3bd8027",
+      "endTableId": "sh_e29bc5ce21b4597d8b371c",
+      "endFieldId": "sh_b52a09bebef357b983125d",
+      "fields": [
+        {
+          "startFieldId": "sh_d8c0fb296bd350f3bd8027",
+          "endFieldId": "sh_b52a09bebef357b983125d"
+        }
+      ],
+      "cardinality": "many_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "sh_6bef491f80ab56fc92ef6b",
+      "name": "fk_incident_assessment_events_event_id",
+      "startTableId": "sh_74906ec5ddd553559e81ad",
+      "startFieldId": "sh_c6d754948b9d504c95682d",
+      "endTableId": "sh_ca7e64bdcf5b5caabbc286",
+      "endFieldId": "sh_30fd9d02b46858ddb40e15",
+      "fields": [
+        {
+          "startFieldId": "sh_c6d754948b9d504c95682d",
+          "endFieldId": "sh_30fd9d02b46858ddb40e15"
+        }
+      ],
+      "cardinality": "one_to_one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    }
+  ],
+  "notes": [
+    {
+      "id": 0,
+      "x": -300,
+      "y": -1100,
+      "width": 1500,
+      "height": 480,
+      "title": "SQLite ERD · v1.5.0 · 2026-11-22",
+      "color": "#f2f2f2",
+      "locked": false,
+      "content": "현재 app/schema.sql에서 직접 생성: 21개 테이블 · 141개 열 · 33개 외래키.\n다섯 영역: 사용자·인증 / 장치 / 이벤트·사고·패턴 / 복약 / 알림·동기화. 신규 세 테이블: auth_sessions, auth_login_attempts, incident_assessment_events.\n선은 FK 참조와 1:1 또는 다대일을 표시합니다. 필수 여부는 각 필드의 notNull을 함께 확인하세요. users와 seniors는 seniors.user_id의 UNIQUE에 의해 선택적 1:1입니다.\nseniors.status_event_id는 최초 NULL로 등록 후 이벤트 저장 뒤 갱신합니다. 표의 상호 참조 경고 자체가 잘못된 저장 순서를 뜻하지는 않습니다. devices.parent_device_id는 장치 계층의 자기 참조입니다.\n현재 구현: HTTP 수신, SQLite 기록, REST·WebSocket, 복약 명령·ACK, 로그인 세션, 카메라 결과 연결·중복 제어. 실제 센서·AI·MQTT·FCM·스피커·프론트 앱 연동은 후속 검증입니다.\n카메라 결과 수신 기능은 영상 추론 기능을 뜻하지 않습니다. 알림 생성 기록은 실제 발송 성공, 스피커 재생 성공은 복약 완료를 뜻하지 않습니다. 상세 CHECK·인덱스 정렬 방향의 기준은 app/schema.sql입니다.\\n2026-11-24 배치 정리: 연결이 많은 사용자·어르신·이벤트 표를 중심으로 재배치했습니다. 발표용 SVG는 핵심 관계를 직각선으로, 전체 도표는 참조 상자를 사용해 표시합니다."
+    }
+  ],
+  "subjectAreas": [],
+  "views": [],
+  "database": "sqlite",
+  "title": "안심 서비스 SQLite ERD · v1.5.0 · 2026-11-22"
+}
